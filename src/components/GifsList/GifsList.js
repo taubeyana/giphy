@@ -9,9 +9,10 @@ class Main extends Component {
     componentDidMount() {
         this.props.dispatch(fetchGifs(this.props.searchVal))
     }
-    handleButtonClick(type) {
+    handleButtonClick =(type)=> {
         console.log('clicked ' + type)
-        // this.props.dispatch(fetchGifs(this.props.searchVal))
+        this.props.dispatch(setPage(type))
+        this.props.dispatch(fetchGifs(this.props.searchVal))
     }
     render() {
         return (

@@ -30,9 +30,9 @@ const rootReducer = (state = initialState, action) => {
             // console.log(action.payload);
             return {...state, totalItems: action.payload};
         case SET_NEXT_PAGE: 
-            return {...state, pageNumber: state.pageNumber++ };
+            return {...state, pageNumber: state.pageNumber + 1 };
         case SET_PREV_PAGE: 
-            return {...state, pageNumber: state.pageNumber-- };
+            return {...state, pageNumber: state.pageNumber - 1 };
         default:
             return state;
             
