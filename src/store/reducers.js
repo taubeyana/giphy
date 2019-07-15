@@ -4,22 +4,28 @@ import {
     SET_SEARCH_VALUE,
     SET_NEXT_PAGE,
     SET_PREV_PAGE,
-    SET_TOTAL_ITEMS
+    SET_TOTAL_ITEMS,
+    SET_STORED_GIFS
 } from './actions'
 const initialState = {
     gifs: [],
     isLoading: true,
-    searchVal: 'cat',
+    searchVal: '',
     pageNumber: 1,
     amountOfItems: 10,
-    totalItems: 0
+    totalItems: 0,
+    storedGifs: {1: []}
 }
 
 const rootReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case GET_GIFS: 
             // console.log(action.payload);
             return {...state, gifs: action.payload};
+        case SET_STORED_GIFS: 
+            const newState = {...state}
+            return newState['storedGifs'][state.pageNumber] = action.payload
         case SET_LOADING_STATUS: 
             // console.log(action.payload);
             return {...state, isLoading: action.payload};
