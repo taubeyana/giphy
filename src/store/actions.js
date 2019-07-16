@@ -15,6 +15,7 @@ export const fetchGifs = () => {
         const state = getState();
         axios.get(`https://api.giphy.com/v1/gifs/search?api_key=bzaWuHmUEaErMs8w1Af1Usur1qy7IwjL&q=${state.searchVal}&limit=${state.amountOfItems}&offset=${state.pageNumber * state.amountOfItems}&rating=G&lang=en`)
         .then(data => {
+            console.log(data.data.data)
             dispatch(setGifs(data.data.data));
             dispatch(setTotalItems(data.data.pagination.total_count));
             dispatch(setLoadingStatus(false));

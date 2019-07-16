@@ -32,7 +32,7 @@ class GifsList extends Component {
             <div className="giphy__gifs">
                 {this.props.gifs
                 .map(el => <Gif key={el.id} 
-                url={el.images.preview_gif.url} 
+                url={el.images.fixed_height_small.url} 
                 title={el.title}/>) }
             </div> 
         )
@@ -40,9 +40,11 @@ class GifsList extends Component {
     render() {
         return (
             <Fragment>
-                <span className='giphy__details'> { this.state.gifsDetailsMsg } </span>
-                { this.props.pageNumber > 1 ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Previous'/> : '' }
-                { this.props.pageNumber * this.props.amountOfItems <= this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Next'/> : '' }
+                <div className='giphy__details'>
+                    <span> { this.state.gifsDetailsMsg } </span>
+                    { this.props.pageNumber > 1 ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Previous'/> : '' }
+                    { this.props.pageNumber * this.props.amountOfItems <= this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Next'/> : '' }
+                </div>
                 { this.renderGifsList() }
             </Fragment>
         )

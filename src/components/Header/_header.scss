@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap');
+@import '../../styles/global';
+@import '../../styles/variables';
 
 .giphy__header {
-    font-family: 'Alfa Slab One', cursive;
-    background: #2B2B2A;
+    font-family: $fontFamilyHeader;
+    background: $grayHeaderBcg;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -13,7 +14,7 @@
     }
     button {
         padding: 9px 15px;
-        background: #00B200;
+        background: $greenHeaderBtn;
         box-shadow: none;
         border: none;
         color: white;
@@ -26,7 +27,7 @@
         border-top-left-radius: inherit;
         border: none;
         box-shadow: none;
-        border: 3px solid #00B200;
+        border: 3px solid $greenHeaderBtn;
     }
     .search {
         border-radius: 10px;
