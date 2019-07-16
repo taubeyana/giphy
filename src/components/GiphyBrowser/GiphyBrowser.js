@@ -11,7 +11,7 @@ class GiphyBrowser extends Component {
     render() {
         return (
             <Fragment>
-                <Header header="Giphy Browser"/>
+                <Header className="giphy__header" header="Giphy Browser"/>
                 { this.props.isLoading ? <span style={{color: 'red'}}>Loading...</span> : <GifsList/>}
             </Fragment>
         )

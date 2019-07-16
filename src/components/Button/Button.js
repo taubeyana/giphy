@@ -1,7 +1,10 @@
 import React from 'react';
 const Button = (props) => {
        return (
-           <button onClick={(type) => props.onBtnClick(props.type)}>{props.type}</button>
+            <button className = { props.className } 
+                    onClick={ (type) => props.onBtnClick(props.type) }>
+                { props.type }
+            </button>
        )
 }
 
