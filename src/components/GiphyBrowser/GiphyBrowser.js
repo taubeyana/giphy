@@ -4,6 +4,7 @@ import { setLoadingStatus, setPage } from '../../store/actions';
 
 import Header from '../Header/Header';
 import GifsList from '../GifsList/GifsList';
+import { Loader } from '../Loader/Loader';
 
 class GiphyBrowser extends Component {
     componentWillMount() {
@@ -14,7 +15,7 @@ class GiphyBrowser extends Component {
         return (
             <Fragment>
                 <Header className="giphy__header" header="Giphy Browser"/>
-                { this.props.isLoading ? <span> Loading... </span> : <GifsList/>}
+                { this.props.isLoading ? <Loader/> : <GifsList/>}
             </Fragment>
         )
     }

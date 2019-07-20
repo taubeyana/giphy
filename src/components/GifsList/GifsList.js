@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchGifs, setPage } from '../../store/actions';
-
+import numeral from 'numeral';
 import Gif from '../Gif/Gif';
 import Button from '../Button/Button';
 
@@ -19,14 +19,15 @@ class GifsList extends Component {
         } 
     }
     handleButtonClick = (type) => {
-        this.props.dispatch(setPage(type))
-        this.props.dispatch(fetchGifs())
+        this.props.dispatch(setPage(type));
+        this.props.dispatch(fetchGifs());
     }
     renderDetailsMessage() {
+        let formattedNum = numeral(this.props.totalItems).format('0,0');
         return (
             this.props.searchVal
-            ? `Showing ${ this.state.firstItemNumber } - ${ this.state.lastItemNumber} results of total ${this.props.totalItems} for "${ this.props.searchVal }"`
-            : `Nothing to show... `
+            ? <span> Showing { this.state.firstItemNumber } - { this.state.lastItemNumber} results of total { formattedNum } for "<b>{ this.props.searchVal}</b>"</span>
+            : <span> Nothing to show... </span>
         )
     }
     renderGifsList() {
@@ -35,7 +36,10 @@ class GifsList extends Component {
                 {this.props.gifs
                 .map(item => <Gif key = { item.id } 
                 url = { item.images.fixed_height_small.url } 
-                title = { item.title }/>) }
+                title = { item.title.toUpperCase() }
+                width = { item.images.fixed_height_small.width } />
+            )}
+                
             </div> 
         )
     }
@@ -44,8 +48,8 @@ class GifsList extends Component {
             <Fragment>
                 <div className='giphy__details'>
                     { this.renderDetailsMessage() }
-                    { this.props.pageNumber > 1 ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Previous'/> : '' }
-                    { this.props.pageNumber * this.props.amountOfItems <= this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Next'/> : '' }
+                    { this.props.pageNumber > 1 ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='PREVIOUS'/> : '' }
+                    { this.props.pageNumber * this.props.amountOfItems <= this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='NEXT'/> : '' }
                 </div>
                 { this.renderGifsList() }
             </Fragment>
