@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
-import { setSearchValue, fetchGifs } from '../../store/actions'
+import { setSearchValue, fetchGifs, resetSearch} from '../../store/actions'
 
 class Search extends Component  {
     constructor(props) {
@@ -9,8 +9,10 @@ class Search extends Component  {
     }
     handleSearch() {
         if ( this.searchValue.current.value ) {
+            this.props.dispatch(resetSearch());
             this.props.dispatch(setSearchValue(this.searchValue.current.value))
-            this.props.dispatch(fetchGifs())
+            this.props.dispatch(fetchGifs());
+
         }
     }
     render() {

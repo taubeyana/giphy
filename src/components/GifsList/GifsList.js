@@ -6,18 +6,6 @@ import Gif from '../Gif/Gif';
 import Button from '../Button/Button';
 
 class GifsList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            firstItemNumber: this.props.pageNumber * this.props.gifs.length - (this.props.gifs.length - 1),
-            lastItemNumber: this.props.pageNumber * this.props.gifs.length
-        }
-    }
-    componentDidMount() {
-        if (this.props.isLoading) {
-            this.props.dispatch(fetchGifs())
-        } 
-    }
     handleButtonClick = (type) => {
         this.props.dispatch(setPage(type));
         this.props.dispatch(fetchGifs());
@@ -26,7 +14,7 @@ class GifsList extends Component {
         let formattedNum = numeral(this.props.totalItems).format('0,0');
         return (
             this.props.searchVal
-            ? <span> Showing { this.state.firstItemNumber } - { this.state.lastItemNumber} results of total { formattedNum } for "<b>{ this.props.searchVal}</b>"</span>
+            ? <span> Showing { this.props.firstItemNumber } - { this.props.lastItemNumber} results of total { formattedNum } for "<b>{ this.props.searchVal}</b>"</span>
             : <span> Nothing to show... </span>
         )
     }
@@ -62,6 +50,8 @@ const mapStateToProps = state => ({
     isLoading: state.isLoading,
     pageNumber: state.pageNumber,
     totalItems: state.totalItems, 
-    amountOfItems: state.amountOfItems
+    amountOfItems: state.amountOfItems,
+    firstItemNumber: state.firstItemNumber,
+    lastItemNumber: state.lastItemNumber
 })
 export default connect(mapStateToProps)(GifsList);

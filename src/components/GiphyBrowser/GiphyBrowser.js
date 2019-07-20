@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { setLoadingStatus, setPage } from '../../store/actions';
+import { setPage } from '../../store/actions';
 
 import Header from '../Header/Header';
 import GifsList from '../GifsList/GifsList';
@@ -8,7 +8,6 @@ import { Loader } from '../Loader/Loader';
 
 class GiphyBrowser extends Component {
     componentWillMount() {
-        this.props.dispatch(setLoadingStatus(false))
         this.props.dispatch(setPage('Next'));
     }
     render() {

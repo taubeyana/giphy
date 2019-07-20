@@ -5,15 +5,21 @@ import {
     SET_NEXT_PAGE,
     SET_PREV_PAGE,
     SET_TOTAL_ITEMS,
+    SET_FIRST_ITEM,
+    SET_LAST_ITEM,
+    RESET_SEARCH
 } from './actions';
 
 const initialState = {
     gifs: [],
-    isLoading: true,
+    isLoading: false,
     searchVal: '',
     pageNumber: 0,
+    selectedPage: '',
     amountOfItems: 10,
-    totalItems: 0
+    totalItems: 0,
+    firstItemNumber: 0,
+    lastItemNumber: 0
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -27,9 +33,15 @@ const rootReducer = (state = initialState, action) => {
         case SET_TOTAL_ITEMS: 
             return {...state, totalItems: action.payload};
         case SET_NEXT_PAGE: 
-            return {...state, pageNumber: state.pageNumber + 1 };
+            return {...state, pageNumber: state.pageNumber + 1, selectedPage: 'next' };
         case SET_PREV_PAGE: 
-            return {...state, pageNumber: state.pageNumber - 1 };
+            return {...state, pageNumber: state.pageNumber - 1, selectedPage: 'previous' };
+        case SET_FIRST_ITEM: 
+            return {...state, firstItemNumber: action.payload};
+        case SET_LAST_ITEM: 
+            return {...state, lastItemNumber: action.payload};
+        case RESET_SEARCH: 
+            return {...state, firstItemNumber: 0, lastItemNumber: 0, pageNumber: 1};
         default:
             return state;
     }
