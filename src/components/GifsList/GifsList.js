@@ -9,13 +9,8 @@ class GifsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gifsDetailsMsg: this.props.searchVal 
-                            ? `Showing 
-                            ${this.props.amountOfItems * this.props.pageNumber - (this.props.amountOfItems - 1) }
-                            - ${this.props.amountOfItems * this.props.pageNumber}
-                            results of total ${this.props.totalItems} 
-                            for "${ this.props.searchVal }"`
-                            : `Nothing to show... `
+            firstItemNumber: this.props.pageNumber * this.props.gifs.length - (this.props.gifs.length - 1),
+            lastItemNumber: this.props.pageNumber * this.props.gifs.length
         }
     }
     componentDidMount() {
@@ -23,17 +18,24 @@ class GifsList extends Component {
             this.props.dispatch(fetchGifs())
         } 
     }
-    handleButtonClick =(type)=> {
+    handleButtonClick = (type) => {
         this.props.dispatch(setPage(type))
         this.props.dispatch(fetchGifs())
+    }
+    renderDetailsMessage() {
+        return (
+            this.props.searchVal
+            ? `Showing ${ this.state.firstItemNumber } - ${ this.state.lastItemNumber} results of total ${this.props.totalItems} for "${ this.props.searchVal }"`
+            : `Nothing to show... `
+        )
     }
     renderGifsList() {
         return (
             <div className="giphy__gifs">
                 {this.props.gifs
-                .map(el => <Gif key={el.id} 
-                url={el.images.fixed_height_small.url} 
-                title={el.title}/>) }
+                .map(item => <Gif key = { item.id } 
+                url = { item.images.fixed_height_small.url } 
+                title = { item.title }/>) }
             </div> 
         )
     }
@@ -41,7 +43,7 @@ class GifsList extends Component {
         return (
             <Fragment>
                 <div className='giphy__details'>
-                    <span> { this.state.gifsDetailsMsg } </span>
+                    { this.renderDetailsMessage() }
                     { this.props.pageNumber > 1 ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Previous'/> : '' }
                     { this.props.pageNumber * this.props.amountOfItems <= this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='Next'/> : '' }
                 </div>

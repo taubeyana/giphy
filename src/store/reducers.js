@@ -11,7 +11,7 @@ const initialState = {
     gifs: [],
     isLoading: true,
     searchVal: '',
-    pageNumber: 1,
+    pageNumber: 0,
     amountOfItems: 10,
     totalItems: 0
 }
