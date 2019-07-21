@@ -1,6 +1,11 @@
 @import '../../styles/global';
 @import '../../styles/variables';
 
+.giphy__initial-text span {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
 .giphy__gifs {
     display: flex;
     flex-wrap: wrap;

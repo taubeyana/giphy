@@ -15,7 +15,10 @@ class GifsList extends Component {
         return (
             this.props.searchVal
             ? <span> Showing { this.props.firstItemNumber } - { this.props.lastItemNumber} results of total { formattedNum } for "<b>{ this.props.searchVal}</b>"</span>
-            : <span> Nothing to show... </span>
+            : <div className="giphy__initial-text">
+                <span> Nothing to show yet... </span>
+                <span> Use the search bar to find cool GIFs </span>
+            </div>
         )
     }
     renderGifsList() {

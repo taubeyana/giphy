@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
-import { setSearchValue, fetchGifs, resetSearch} from '../../store/actions'
+import { setSearchValue, fetchGifs, resetSearch} from '../../store/actions';
 
 class Search extends Component  {
     constructor(props) {

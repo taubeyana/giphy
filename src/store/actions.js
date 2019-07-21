@@ -20,7 +20,7 @@ export const fetchGifs = () => {
     return (dispatch, getState) => {
         dispatch(setLoadingStatus(true));
         const state = getState();
-        axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}q=${state.searchVal}&limit=${state.amountOfItems}&offset=${state.pageNumber * state.amountOfItems}&rating=G&lang=en`)
+        axios.get(`https://api.giphy.com/v1/gifs/search?api_key=bzaWuHmUEaErMs8w1Af1Usur1qy7IwjL&q=${state.searchVal}&limit=${state.amountOfItems}&offset=${state.pageNumber * state.amountOfItems}&rating=G&lang=en`)
         .then(data => {
             let gifs = data.data.data;
             let totalItemsCount = data.data.pagination.total_count;
