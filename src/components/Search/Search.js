@@ -12,13 +12,17 @@ class Search extends Component  {
             this.props.dispatch(resetSearch());
             this.props.dispatch(setSearchValue(this.searchValue.current.value))
             this.props.dispatch(fetchGifs());
-
+        }
+    }
+    handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            this.handleSearch();
         }
     }
     render() {
         return (
         <div className="search">
-            <input ref = {this.searchValue} placeholder = "Search GIFs..."/>
+            <input ref = {this.searchValue} placeholder = "Search GIFs..." onKeyDown = { (e) => this.handleKeyDown(e) } />
             <button onClick = { () => this.handleSearch() }> Search </button>
         </div>
     )}

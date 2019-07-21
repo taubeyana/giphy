@@ -22,8 +22,10 @@ export const fetchGifs = () => {
             let totalItemsCount = data.data.pagination.total_count;
             dispatch(setGifs(gifs));
             dispatch(setTotalItems(totalItemsCount));
-            dispatch(setFirstItem(state.pageNumber * gifs.length - (gifs.length - 1)));
-            dispatch(setLastItem(state.pageNumber * gifs.length));
+            if (gifs.length > 0) {
+                dispatch(setFirstItem(state.pageNumber * gifs.length - (gifs.length - 1)));
+                dispatch(setLastItem(state.pageNumber * gifs.length));
+            }
             dispatch(setLoadingStatus(false));
         })
         .catch(err => {

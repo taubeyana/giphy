@@ -37,7 +37,7 @@ class GifsList extends Component {
                 <div className='giphy__details'>
                     { this.renderDetailsMessage() }
                     { this.props.pageNumber > 1 ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='PREVIOUS'/> : '' }
-                    { this.props.pageNumber * this.props.amountOfItems <= this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='NEXT'/> : '' }
+                    { this.props.pageNumber * this.props.amountOfItems < this.props.totalItems ? <Button className='giphy__navbtn' onBtnClick = { this.handleButtonClick } type='NEXT'/> : '' }
                 </div>
                 { this.renderGifsList() }
             </Fragment>
