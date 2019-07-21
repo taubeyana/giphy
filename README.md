@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-[Giphy Browser](https://taubeyana.github.io/gipy/) 
+[Giphy Browser](https://taubeyana.github.io/giphy/) 
 The demo uploaded to GitHub Pages.
 
 
