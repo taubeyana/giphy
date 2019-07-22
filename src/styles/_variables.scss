@@ -1,7 +1,7 @@
 //  ----- Colors -----
 
 $grayHeaderBcg: #2B2B2A;
-$greenHeaderBtn: green;
+$greenHeaderBtn: #00B200;
 $lightGrayMainBtn: #C5C5C5;
 $darkGrayTextColor: #767676;
 
@@ -9,7 +9,7 @@ $darkGrayTextColor: #767676;
 
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap');
 $fontFamilyHeader: 'Alfa Slab One', cursive;
-
+$fontFamilyMain: sans-serif;
 // ----- Mixins -----
 @mixin ellipsis() {
     overflow: hidden;
